@@ -1,7 +1,17 @@
 form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /*align-items: center;*/
     justify-content: center;
     padding: 2rem;
+}
+
+form label {
+    font-size: 1.6rem;
+    text-align: left;
+}
+
+form input {
+    /*max-width: 30rem;*/
+    margin-bottom: 1.5rem;
 }

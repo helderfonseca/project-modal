@@ -6,10 +6,20 @@ import './App.css'
 
 function App() {
 
+    const [users, setUsers] = useState([
+        {id: 1, name: "Helder Fonseca", age: 31},
+    ]);
+
+    const saveNewUserHandler = newUser => {
+        setUsers(prevUsers => {
+            return [...prevUsers, newUser];
+        });
+    };
+
   return (
     <div className='app'>
-        <AddUser />
-        <Users />
+        <AddUser addNewUser={saveNewUserHandler} />
+        <Users users={users}/>
     </div>
   )
 }
