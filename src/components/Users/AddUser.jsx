@@ -8,12 +8,7 @@ export const AddUser = props => {
             id: Math.random().toString(),
             ...newUser
         }
-        props.addNewUser(prevUser => {
-            return {
-                ...prevUser,
-                user
-            }
-        });
+        props.addNewUser(user);
     };
 
     return (

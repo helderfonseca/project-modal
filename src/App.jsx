@@ -7,12 +7,12 @@ import './App.css'
 function App() {
 
     const [users, setUsers] = useState([
-        {id: 1, name: "Helder Fonseca", age: 31},
+        {id: 1, username: "Helder Fonseca", age: 31},
     ]);
 
     const saveNewUserHandler = newUser => {
         setUsers(prevUsers => {
-            return [...prevUsers, newUser];
+            return [newUser, ...prevUsers];
         });
     };
 

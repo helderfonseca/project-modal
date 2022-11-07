@@ -42,7 +42,7 @@ export const UserForm = props => {
                     <label htmlFor='username'>Username</label>
                     <input type='text' id='username' value={username} onChange={usernameHandler}/>
                     <label htmlFor='age'>Age (Years)</label>
-                    <input type='number' id='age' name='age' value={age} onChange={ageHandler}/>
+                    <input type='number' id='age' value={age} onChange={ageHandler}/>
                     <Button type='submit'>Add User</Button>
                 </form>
             </Card>

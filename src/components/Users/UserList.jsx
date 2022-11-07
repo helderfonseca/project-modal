@@ -1,4 +1,5 @@
 import {UserItem} from "./UserItem";
+import './UserList.css';
 
 export const UserList = props => {
     return (
@@ -7,7 +8,7 @@ export const UserList = props => {
                     <UserItem
                         key={user.id}
                         id={user.id}
-                        name={user.name}
+                        username={user.username}
                         age={user.age} />
                 )}
             </ul>

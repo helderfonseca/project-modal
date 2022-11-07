@@ -7,11 +7,18 @@ form {
 }
 
 form label {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     text-align: left;
 }
 
 form input {
     /*max-width: 30rem;*/
     margin-bottom: 1.5rem;
+    border: .5px solid #ccc;
+    height: 3rem;
+    border-radius: .5rem;
+}
+
+form input:focus {
+    outline: 0;
 }
