@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+  font-family: sans-serif;
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  /*display: flex;*/
+  background: #1f1f1f;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2rem;
+  line-height: 1.1;
+}
+
