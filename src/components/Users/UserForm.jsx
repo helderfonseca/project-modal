@@ -6,17 +6,14 @@ import { ErrorModal } from '../UI/ErrorModal';
 
 export const UserForm = props => {
 
+    const [isShowing, setIsShowing] = useState(false);
     const [username, setUsername] = useState('');
     const [age, setAge] = useState('');
 
     const addUserHandler = event => {
         event.preventDefault();
-        if (username.trim().length === 0) {
-            return;
-        }
-
-        if (age.trim().length === 0) {
-            return;
+        if (username.trim().length === 0 || age.trim().length === 0) {
+            setIsShowing(true);
         }
 
         if (age < 1) {
@@ -41,6 +38,12 @@ export const UserForm = props => {
         setAge(event.target.value);
     };
 
+    const closeModalHandler = (event) => {
+        //event.preventDefault();
+        console.log('Close.');
+        //setIsShowing(false);
+    };
+
     return (
         <div>
             <Card>
@@ -52,7 +55,8 @@ export const UserForm = props => {
                     <Button type='submit'>Add User</Button>
                 </form>
             </Card>
-            <ErrorModal title='Error' content='Error content' />
+            {isShowing && <ErrorModal title='Error' content='Error content' onCloseModal={closeModalHandler}/>}
+            {/*!isShowing && ''*/}
         </div>
     );
 };

@@ -3,6 +3,12 @@ import { Button } from "./Button/Button";
 import './ErrorModal.css';
 
 export const ErrorModal = props => {
+
+  const btnClickHandler = event => {
+    //event.preventDefault();
+    props.onCloseModal();
+  };
+
   return <Card className="modal">
           <header className="header">
             <h2>{props.title}</h2>
@@ -11,7 +17,7 @@ export const ErrorModal = props => {
             <p>{props.content}</p>
           </div>
           <footer className="actions">
-            <Button>Okay</Button>
+            <Button type="button" onClick={btnClickHandler}>Okay</Button>
           </footer>
         </Card>
 };
