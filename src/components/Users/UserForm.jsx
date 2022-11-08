@@ -2,6 +2,7 @@ import { Button } from '../UI/Button/Button';
 import { Card } from '../UI/Card';
 import { useState } from "react";
 import './UserForm.css';
+import { ErrorModal } from '../UI/ErrorModal';
 
 export const UserForm = props => {
 
@@ -41,6 +42,7 @@ export const UserForm = props => {
     };
 
     return (
+        <div>
             <Card>
                 <form onSubmit={addUserHandler}>
                     <label htmlFor='username'>Username</label>
@@ -50,5 +52,7 @@ export const UserForm = props => {
                     <Button type='submit'>Add User</Button>
                 </form>
             </Card>
+            <ErrorModal title='Error' content='Error content' />
+        </div>
     );
 };

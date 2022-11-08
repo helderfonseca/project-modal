@@ -1,7 +1,7 @@
 button {
-    background: #ffa;
+    background: #F3FFBD;
     border: 0;
-    padding: .7rem 0;
+    padding: .7rem .7rem;
     border-radius: .5rem;
     font-weight: 700;
     cursor: pointer;
