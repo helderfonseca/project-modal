@@ -6,9 +6,7 @@ import './App.css'
 
 function App() {
 
-    const [users, setUsers] = useState([
-        {id: 1, username: "Helder Fonseca", age: 31},
-    ]);
+    const [users, setUsers] = useState([]);
 
     const saveNewUserHandler = newUser => {
         setUsers(prevUsers => {

@@ -6,7 +6,7 @@ import './UserForm.css';
 export const UserForm = props => {
 
     const [username, setUsername] = useState('');
-    const [age, setAge] = useState(0);
+    const [age, setAge] = useState('');
 
     const addUserHandler = event => {
         event.preventDefault();
@@ -18,6 +18,10 @@ export const UserForm = props => {
             return;
         }
 
+        if (age < 1) {
+            return;
+        }
+
         const newUser = {
             username: username,
             age: +age
@@ -25,7 +29,7 @@ export const UserForm = props => {
 
         props.onAddNewUser(newUser);
         setUsername('');
-        setAge(0);
+        setAge('');
     };
 
     const usernameHandler = event => {
