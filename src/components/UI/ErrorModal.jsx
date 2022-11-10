@@ -2,12 +2,15 @@ import { Card } from "./Card";
 import { Button } from "./Button/Button";
 import './ErrorModal.css';
 import { Wrapper } from "../Helpers/Wrapper";
+import ReactDOM from 'react-dom';
 
-export const ErrorModal = props => {
 
-  return <Wrapper>
-          <div className="backdrop" onClick={props.onCloseModal}/>
-          <Card className="modal">
+const Backdrop = props => {
+  return <div className="backdrop" onClick={props.onCloseModal} />;
+};
+
+const Modal = props => {
+  return <Card className="modal">
             <header className="header">
               <h2>{props.title}</h2>
             </header>
@@ -18,5 +21,12 @@ export const ErrorModal = props => {
               <Button onClick={props.onCloseModal}>Okay</Button>
             </footer>
           </Card>
+};
+
+export const ErrorModal = props => {
+
+  return <Wrapper>
+            {ReactDOM.createPortal(<Backdrop onCloseModal={props.onCloseModal}/>, document.getElementById('backdrop-root'))}
+            {ReactDOM.createPortal(<Modal title={props.title} content={props.content} onCloseModal={props.onCloseModal} />, document.getElementById('overlay-root'))}
         </Wrapper>
 };

@@ -65,7 +65,6 @@ export const UserForm = props => {
                 </form>
             </Card>
             {error && <ErrorModal title={error.title} content={error.message} onCloseModal={closeModalHandler}/>}
-            {/*!isShowing && ''*/}
         </Wrapper>
     );
 };
