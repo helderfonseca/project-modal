@@ -1,11 +1,12 @@
 import { Card } from "./Card";
 import { Button } from "./Button/Button";
 import './ErrorModal.css';
+import { Wrapper } from "../Helpers/Wrapper";
 
 export const ErrorModal = props => {
 
-  return <>
-          <div className="backdrop"></div>
+  return <Wrapper>
+          <div className="backdrop" onClick={props.onCloseModal}/>
           <Card className="modal">
             <header className="header">
               <h2>{props.title}</h2>
@@ -14,8 +15,8 @@ export const ErrorModal = props => {
               <p>{props.content}</p>
             </div>
             <footer className="actions">
-              <Button>Okay</Button>
+              <Button onClick={props.onCloseModal}>Okay</Button>
             </footer>
           </Card>
-        </>
+        </Wrapper>
 };
