@@ -1,6 +1,6 @@
 import { Button } from '../UI/Button/Button';
 import { Card } from '../UI/Card';
-import { useState } from "react";
+import { useRef, useState } from "react";
 import './UserForm.css';
 import { ErrorModal } from '../UI/ErrorModal';
 import { Wrapper } from '../Helpers/Wrapper';
@@ -11,9 +11,16 @@ export const UserForm = props => {
     const [username, setUsername] = useState('');
     const [age, setAge] = useState('');
 
+    const userNameRef = useRef();
+    const userAgeRef = useRef();
+
     const addUserHandler = event => {
+
+        const enteredName = userNameRef.current.value;
+        const enteredAge = userAgeRef.current.value;
+
         event.preventDefault();
-        if (username.trim().length === 0 || age.trim().length === 0) {
+        if (enteredName.trim().length === 0 || enteredAge.trim().length === 0) {
             setError({
                 title: 'input error',
                 message: 'Please field can be empty'
@@ -21,7 +28,7 @@ export const UserForm = props => {
             return;
         }
 
-        if (+age < 1) {
+        if (+enteredAge < 1) {
             setError({
                 title: 'Age error',
                 message: 'Age can\'t be negative number'
@@ -30,41 +37,51 @@ export const UserForm = props => {
         }
 
         const newUser = {
-            username: username,
-            age: +age
+            username: userNameRef,
+            age: +userAgeRef
         }
 
         props.onAddNewUser(newUser);
-        setUsername('');
-        setAge('');
+        //setUsername('');
+        //setAge('');
+        userNameRef.current.value = '';
+        userAgeRef.current.value = '';0
     };
 
-    const usernameHandler = event => {
+    /*const usernameHandler = event => {
         setUsername(event.target.value);
     };
 
     const ageHandler = event => {
         setAge(event.target.value);
-    };
+    };*/
 
     const closeModalHandler = (event) => {
         //event.preventDefault();
-        console.log('Close.');
+        //console.log('Close.');
         setError(null);
     };
 
     return (
-        <Wrapper>
+        <>
             <Card>
                 <form onSubmit={addUserHandler}>
                     <label htmlFor='username'>Username</label>
-                    <input type='text' id='username' value={username} onChange={usernameHandler}/>
+                    <input 
+                        type='text' 
+                        id='username' 
+                        ref={userNameRef}
+                    />
                     <label htmlFor='age'>Age (Years)</label>
-                    <input type='number' id='age' value={age} onChange={ageHandler}/>
+                    <input 
+                        type='number' 
+                        id='age' 
+                        ref={userAgeRef}
+                    />
                     <Button type='submit' onCloseModal={closeModalHandler}>Add User</Button>
                 </form>
             </Card>
             {error && <ErrorModal title={error.title} content={error.message} onCloseModal={closeModalHandler}/>}
-        </Wrapper>
+        </>
     );
 };
